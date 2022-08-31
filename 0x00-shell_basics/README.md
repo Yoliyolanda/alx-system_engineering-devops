@@ -1,1 +1,1 @@
-this is project is to have a file
+this is project to have a file
