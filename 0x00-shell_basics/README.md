@@ -1,1 +1,1 @@
-this is project to have a file
+Display current directory contents in a long format
