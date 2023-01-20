@@ -1,1 +1,1 @@
-solutins for command_line_for_the_win
+solutions for command_line_for_the_win
