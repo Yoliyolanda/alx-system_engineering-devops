@@ -3,9 +3,16 @@
 # Install Nginx
 sudo apt-get update
 sudo apt-get install -y nginx
+sudo ufw allow 'Nginx HTTP'
+mkdir -p /var/www/html
+chmod -R 755 /var/www
+
+# Create index.html and 404.html files
+echo "Hello World!" > /var/www/html/index.html
+echo "Ceci n'est pas une page" > /var/www/html/404.html
 
 # Add custom HTTP response header
-sudo sed -i 's/# server_tokens off;/add_header Test "This a custom header";\n        server_tokens off;/' /etc/nginx/nginx.conf
+sudo sed -i 's/# server_tokens off;/add_header X-Served-By $host;\n        server_tokens off;/' /etc/nginx/nginx.conf
 
 # Reload Nginx
 sudo service nginx reload
