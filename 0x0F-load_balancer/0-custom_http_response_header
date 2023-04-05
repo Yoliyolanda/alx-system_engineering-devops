@@ -17,3 +17,4 @@ sudo sed -i 's/# server_tokens off;/add_header X-Served-By $host;\n        serve
 # Reload Nginx
 sudo service nginx reload
 
+
