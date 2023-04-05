@@ -1,11 +1,8 @@
-#!/bin/bash
-"""This script configures web-02 to be identical to web-01"""
+#!/usr/bin/env bash
+#This script configures web-02 to be identical to web-01
 # Install Nginx
 sudo apt-get update
 sudo apt-get install -y nginx
-sudo ufw allow 'Nginx HTTP'
-mkdir -p /var/www/html
-chmod -R 755 /var/www
 
 # Create index.html and 404.html files
 echo "Hello World!" > /var/www/html/index.html
