@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
-#This script configures web-02 to be identical to web-01
-# Install Nginx
+#This script Instals  Nginx and config web-02 to be identical to web-01
 sudo apt-get update
 sudo apt-get install -y nginx
 
@@ -9,7 +8,7 @@ echo "Hello World!" > /var/www/html/index.html
 echo "Ceci n'est pas une page" > /var/www/html/404.html
 
 # Add custom HTTP response header
-sudo sed -i 's/# server_tokens off;/add_header X-Served-By $host;\n        server_tokens off;/' /etc/nginx/nginx.conf
+sudo sed -i 's/# server_tokens off;/add_header X-Served-By $host;\n  server_tokens off;/' /etc/nginx/nginx.conf
 
 # Reload Nginx
 sudo service nginx reload
