@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-#short and sweet fix
-ln -sf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
+#short and sweet fix  
+sudo ln -sf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
 sudo systemctl restart nginx
-rm /run/nginx.pid
+rm /var/run/nginx.pid
