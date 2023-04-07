@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-#short and sweet fix  
+#This script that configures a server on port 80
 sed -i 's/8080/80/g' /etc/nginx/sites-enabled/default
 sudo systemctl restart nginx
 rm /var/run/nginx.pid
