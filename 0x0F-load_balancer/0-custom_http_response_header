@@ -1,16 +1,32 @@
 #!/usr/bin/env bash
 #This script Instals  Nginx and config web-02 to be identical to web-01
-sudo apt-get update
-sudo apt-get install -y nginx
-
-# Create index.html and 404.html files
+apt-get update
+apt-get install -y nginx
+sudo ufw allow 'Nginx Http'
+mkdir -p /var/www/html
+touch /var/www/html/index.html
 echo "Hello World!" > /var/www/html/index.html
+touch /var/www/html/404.html
 echo "Ceci n'est pas une page" > /var/www/html/404.html
 
-# Add custom HTTP response header
-sudo sed -i 's/# server_tokens off;/add_header X-Served-By $host;\n  server_tokens off;/' /etc/nginx/nginx.conf
+printf %s "server {
+     listen 80 default_server;
+     listen [::]:80 default_server;
+     add_header X-Served-By $HOSTNAME;
+     root /var/www/html;
+     index index.html index.htm;
+     
+     location /redirect_me {
+         return 301 https://github.com/Yoliyolanda;
+     }
+     error_page 404 /404.html;
+     location /404 {
+         root /var/www/html;
+         internal;
+     }
+}
+" > /etc/nginx/sites-available/default
 
-# Reload Nginx
-sudo service nginx reload
+service nginx restart
 
 
