@@ -1,4 +1,4 @@
-#Fix our stack so that we get to 0
+# Fix our stack so that we get to 0
 
 exec {'replace':
   provider => shell,
